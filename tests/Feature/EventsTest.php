@@ -65,6 +65,6 @@ class EventsTest extends TestCase
         $event->talents()->attach($talentOne, ['amount' => '65450']);
         $event->talents()->attach($talentTwo, ['amount' => '98756']);
         $this->assertEquals(164206, $event->amount);
-        $this->assertEquals(1642.06, $event->INRAmount);
+        $this->assertEquals(1642.06, $event->base_amount);
     }
 }

@@ -10,6 +10,11 @@ use Money\Currency;
 
 trait HasMoney
 {
+    public function getBaseAmountAttribute()
+    {
+        return $this->amount / $this->minorUnit('INR');
+    }
+
     private function minorUnit($currency)
     {
         return 10 ** $this->subUnits($currency);

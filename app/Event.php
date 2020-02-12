@@ -25,15 +25,10 @@ class Event extends Model
     public function getAmountAttribute()
     {
         $amount = Money::INR(0);
-        foreach ($this->talents as $key => $talent) {
+        foreach ($this->talents as $talent) {
             $talentAmount = Money::INR($talent->pivot->amount);
             $amount = $amount->add($talentAmount);
         }
         return $amount->getAmount();
-    }
-
-    public function getINRAmountAttribute()
-    {
-        return $this->amount / $this->minorUnit('INR');
     }
 }
