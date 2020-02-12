@@ -7,6 +7,7 @@ use Tests\TestCase;
 use App\Event;
 use App\Booking;
 use App\User;
+use App\Talent;
 
 class EventsTest extends TestCase
 {
@@ -25,8 +26,16 @@ class EventsTest extends TestCase
 
         $booking->events()->save($event);
 
+        $talent = Talent::create([
+            'name' => 'Aniket Magadum',
+            'email' => 'aniketmagadum77@gmail.com'
+        ]);
+
+        $event->talents()->attach($talent, ['amount' => '34000']);
+
         $this->assertCount(1, Booking::all());
         $this->assertCount(1, Event::all());
         $this->assertCount(1, $booking->events);
+        $this->assertCount(1, $event->talents);
     }
 }

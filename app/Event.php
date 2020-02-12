@@ -12,4 +12,9 @@ class Event extends Model
     {
         return $this->belongsTo(Booking::class);
     }
+
+    public function talents()
+    {
+        return $this->belongsToMany(Talent::class);
+    }
 }
